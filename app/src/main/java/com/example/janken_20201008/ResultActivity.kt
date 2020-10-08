@@ -9,6 +9,13 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        val id = intent.getIntExtra("MY_HAND", 0)
+        when(id){
+            R.id.gu -> myHandImage.setImageResource(R.drawable.gu)
+            R.id.choki -> myHandImage.setImageResource(R.drawable.choki)
+            R.id.pa -> myHandImage.setImageResource(R.drawable.pa)
+        }
+
         backButton.setOnClickListener { finish() }
     }
 }
