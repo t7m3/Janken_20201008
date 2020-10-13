@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.text.method.TextKeyListener.clear
 import android.view.View
+import androidx.core.content.edit
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,11 +20,17 @@ class MainActivity : AppCompatActivity() {
         pa.setOnClickListener { onJankenButtonTapped(it) }
 
         //　共有プリファレンスをクリアする
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-        editor.clear()
-            .apply()
+        //val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        //val editor = pref.edit()
+        //editor.clear()
+        //    .apply()
         // ↑ 教科書と、違う方法をとっている
+
+        //　↓ 教科書と同じ方法
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit {
+            clear()
+        }
     }
 
     fun onJankenButtonTapped(view: View){
