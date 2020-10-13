@@ -3,7 +3,9 @@ package com.example.janken_20201008
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +16,13 @@ class MainActivity : AppCompatActivity() {
         gu.setOnClickListener { onJankenButtonTapped(it) }
         choki.setOnClickListener { onJankenButtonTapped(it) }
         pa.setOnClickListener { onJankenButtonTapped(it) }
+
+        //　共有プリファレンスをクリアする
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+        editor.clear()
+            .apply()
+        // ↑ 教科書と、違う方法をとっている
     }
 
     fun onJankenButtonTapped(view: View){
