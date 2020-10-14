@@ -83,7 +83,6 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getHand(): Int {
         var hand = (Math.random() * 3).toInt()
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
